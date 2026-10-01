@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bangkok Coffee</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f1eb;
+            color: #333;
+        }
+
+        header {
+            background: #3e2723;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 8px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .hero h2 {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            width: 220px;
+            padding: 25px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        button {
+            margin-top: 30px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            background: #6d4c41;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #4e342e;
+        }
+
+        #status {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        footer {
+            margin-top: 50px;
+            background: #3e2723;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>☕ Bangkok Coffee</h1>
+        <p>Fresh Coffee • Fresh Code • Fresh Deployment</p>
+    </header>
+
+    <section class="hero">
+        <h2>Welcome to Bangkok Coffee</h2>
+        <p>Your daily coffee, powered by our AWS DevOps project.</p>
+
+        <button onclick="checkBackend()">
+            Check Backend
+        </button>
+
+        <div id="status">
+            Backend status: Not checked
+        </div>
+    </section>
+
+    <section class="menu">
+
+        <div class="card">
+            <h3>☕ Espresso</h3>
+            <p>Strong and rich coffee.</p>
+            <div class="price">฿80</div>
+        </div>
+
+        <div class="card">
+            <h3>🥛 Cappuccino</h3>
+            <p>Classic coffee with milk foam.</p>
+            <div class="price">฿120</div>
+        </div>
+
+        <div class="card">
+            <h3>🧊 Iced Coffee</h3>
+            <p>Cold and refreshing coffee.</p>
+            <div class="price">฿100</div>
+        </div>
+
+    </section>
+
+    <footer>
+        <p>Bangkok Coffee | AWS DevOps Project</p>
+    </footer>
+
+    <script>
+
+        async function checkBackend() {
+
+            const status = document.getElementById("status");
+
+            status.innerText = "Checking backend...";
+
+            try {
+
+                const response = await fetch("/api/health");
+
+                const data = await response.json();
+
+                status.innerText =
+                    "✅ Backend Connected: " + data.message;
+
+            } catch (error) {
+
+                status.innerText =
+                    "❌ Backend connection failed";
+
+                console.error(error);
+            }
+        }
+
+    </script>
+
+</body>
+</html>
