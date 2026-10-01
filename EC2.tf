@@ -18,7 +18,19 @@ resource "aws_instance" "frontend" {
   tags = {
     Name = "project-frontend"
   }
-}
+  user_data = <<-EOF
+    #!/bin/bash
+
+    dnf update -y
+    dnf install -y nginx
+
+    systemctl enable nginx
+    systemctl start nginx
+  EOF
+
+  }
+
+
 
 
 # Private EC2 - Backend
@@ -36,4 +48,14 @@ resource "aws_instance" "backend" {
   tags = {
     Name = "project-backend"
   }
+    user_data = <<-EOF
+    #!/bin/bash
+
+    dnf update -y
+    dnf install -y nginx
+
+    systemctl enable nginx
+    systemctl start nginx
+  EOF
+
 }

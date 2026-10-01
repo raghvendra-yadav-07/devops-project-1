@@ -3,3 +3,6 @@
 *.terraform.tfstate
 *.project1
 *.project1.pub
+*.terraform.tfstate.backupb
+*.backend/
+*.gitignore/
