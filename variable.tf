@@ -18,7 +18,7 @@ variable "private_cidr_block" {
 }
 # for ssh in my subnet my ip address
 variable "my_ip" {
-  default = "10.0.16.0/20"
+  default = "49.237.100.104/32"
   type    = string
 
 
