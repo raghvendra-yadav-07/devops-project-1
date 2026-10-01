@@ -34,6 +34,11 @@ resource "aws_instance" "frontend" {
 
 
 # Private EC2 - Backend
+resource "aws_key_pair" "keypair" {
+    key_name = "terraform"
+    public_key = file("terraform.pub")
+}
+  
 
 resource "aws_instance" "backend" {
   ami           = "ami-0b6d9d3d33ba97d99"
